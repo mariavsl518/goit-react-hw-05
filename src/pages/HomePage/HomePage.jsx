@@ -2,11 +2,11 @@ import React, { useEffect, useState } from 'react'
 import { getMovies } from '../../api';
 import { Link } from 'react-router-dom';
 import MovieDetailsPage from '../../components/MovieDetailsPage/MovieDetailsPage';
+import css from './HomePage.module.css'
 
 export default function HomePage() {
   const [movies, setMovies] = useState([]);
-  const [page, setPage] = useState(1)
- 
+
 useEffect(() => {
   async function fetchMovies(){
     try {
@@ -20,16 +20,15 @@ useEffect(() => {
   fetchMovies()
 }, [ ]);
 
-
   return (
-    <div>
-      <h1>Trending today</h1>
-      <ul>
+    <div className={css.homePageDiv}>
+      <h1 className={css.trendingHeader}>Trending today</h1>
+      <ul className={css.trendingList}>
         {movies.map(movie=>(
           <li key={movie.id}>
-            <Link to={`/movies/${movie.id}`}>
+            <Link to={`/movies/${movie.id}`} className={css.componentLink}>
               <MovieDetailsPage movie={movie} allMovies={movies}/>
-              </Link>
+            </Link>
           </li>
         ))}
       </ul>

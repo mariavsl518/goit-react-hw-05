@@ -1,0 +1,18 @@
+
+.trendingHeader{
+    color: darkgray;
+    text-align: center;
+}
+
+.trendingList{
+    list-style: none;  
+    width: auto; 
+    text-align: left; 
+}
+
+.componentLink{
+    display: flex;
+    gap: 15px;
+    margin-bottom: 15px;
+    width: 100%;
+}

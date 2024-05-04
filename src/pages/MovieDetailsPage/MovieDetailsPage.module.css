@@ -1,4 +1,43 @@
+.detailsPageContainer{
+    padding: 0 20px;
+}
+
+.detailsContainer{
+    display: flex;
+    gap: 50px;
+    margin-bottom: 20px;
+}
+
+.backBtn{
+    display: block;
+    font-size: 25px;
+    padding: 20px 0;
+    text-align: left;
+    color: darkgray;
+    max-width: 70px;
+}
+
 .detailsBox{
     max-width: 500px;
     text-align: left;
+    color: darkgray;
+    font-size: 20px;
+}
+
+.additionsBox{
+    display: flex;
+    justify-content: flex-start;
+    gap: 10px;
+    font-size: 30px;
+    box-shadow: rgba(0, 0, 0, 0.45) 0px 25px 20px -20px;
+    min-width: 100vw;
+    padding-left: 20px;
+    margin-bottom: 30px;
+}
+
+.additions{
+    font-size: 30px;
+    background-color: transparent;
+    padding: 10px;
+    color: rgb(102, 167, 167);
 }

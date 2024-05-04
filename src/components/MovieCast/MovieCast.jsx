@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react'
-import { getMoviesCredits } from '../../api'
-import { useParams, Outlet} from 'react-router-dom'
+import { getMovieCredits } from '../../api'
+import { useParams} from 'react-router-dom'
+import css from './MovieCast.module.css'
 
 const MovieCast = () => {
 
@@ -8,30 +9,32 @@ const MovieCast = () => {
   const {movieId} = useParams()
 
   useEffect(()=>{
-    async function fetchMoviesCredits(){
+    async function fetchMovieCredits(){
       try {
-        const data = await getMoviesCredits(movieId)
-        console.log(data);
+        const data = await getMovieCredits(movieId)
         setCast(data.cast)
       } catch (error) {
         
       }
     }
-    fetchMoviesCredits();
+    fetchMovieCredits();
   },
-  [movieId])
+  [])
+
+  
 
   return (
-    <ul>
-      {cast.map(({id, character, name, profile_path})=>{
-        <li key={id}>
-          <img src={`https://image.tmdb.org/t/p/w500/${profile_path}`} alt={name} />
-          <p>{name}</p>
-          <p>Character:{character}</p>
+    <ul className={css.castList}>
+      {cast.map(({id, character, name, profile_path})=>
+        <li key={id} className={css.castItems}>
+          <img src={`https://image.tmdb.org/t/p/w200/${profile_path}`} alt={name} />
+          <p className={css.castName}>
+            <strong>{name}</strong>
+          </p>
+          <p>Character: {character}</p>
         </li>
-      })
+      )
       }
-      <Outlet/>
     </ul>
   )
 }

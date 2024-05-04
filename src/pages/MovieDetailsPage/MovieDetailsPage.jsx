@@ -25,33 +25,46 @@ const MovieDetailsPage = () => {
   )
 
   return (
-    <>
-    <div>
-      <Link to='/'>Back</Link>
-      <img src={`https://image.tmdb.org/t/p/w500/${currentMovie.poster_path}`} alt={currentMovie.title} />
-      <div className={css.detailsBox}>
-        <h1>{currentMovie.title}</h1>
-        <p>User Score:{Math.round(currentMovie.vote_average*10)}%</p>
-        <p>Overview:<br/>{currentMovie.overview}</p>
-        <p>Genres:<br/>{currentMovie.genres?.map(({name})=>
-          <span>{name} </span>
-          )}
-        </p>
+
+    <div className={css.detailsPageContainer}>
+      <Link to='/'className={css.backBtn}>
+        Back
+      </Link>
+      <div className={css.detailsContainer}>
+        <img src={`https://image.tmdb.org/t/p/w500/${currentMovie.poster_path}`} 
+        alt={currentMovie.title} 
+        className={css.movieImg}/>
+        <div className={css.detailsBox}>
+          <h1>{currentMovie.title}</h1>
+          <p>
+            <strong>User Score: </strong> 
+              {Math.round(currentMovie.vote_average*10)}%
+          </p>
+          <p>
+            <strong>Overview:</strong>
+              <br/>{currentMovie.overview}
+          </p>
+          <p>
+            <strong>Genres:</strong>
+              <br/>{currentMovie.genres?.map(({name, id})=>
+            <span key={id}>{name} </span>
+            )}
+          </p>
+      </div>
+      </div>
+      <div className={css.additionsBox}>
+        <Link to={`cast`} className={css.additions}>
+          Cast
+        </Link>
+
+        <Link to={`reviews`} className={css.additions}>
+          Reviews
+        </Link>
       </div>
 
-      <Link to={`cast`}>
-        Cast
-      </Link>
-
-      <Link to={`reviews`}>
-        Reviews
-      </Link>
-
-          <Outlet/>
-
+            <Outlet/>
       </div>
 
-    </>
   )
 }
 

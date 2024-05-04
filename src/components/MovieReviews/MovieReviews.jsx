@@ -1,10 +1,35 @@
-import React from 'react'
+import React, { useEffect, useState } from 'react'
+import { getMovieReview } from '../../api'
+import { useParams } from 'react-router-dom'
 
 const MovieReviews = () => {
 
-  // console.log(currentMovie);
+  const {movieId} = useParams()
+  const [reviews, setReviews]= useState([])
+ 
+  useEffect(()=>{
+    async function fetchMovieReviews(){
+      try {
+        const data = await getMovieReview(movieId);
+        setReviews(data.results);
+      } catch (error) {
+        
+      }
+    }
+    fetchMovieReviews()
+  },[])
+
+  console.log(reviews);
+
   return (
-    <div>MovieReviews</div>
+      <ul>
+        {reviews.map(({author, content,id})=>
+          <li key={id}>
+            <p>{author}</p>
+            <p>{content}</p>
+          </li>
+        )}
+      </ul>
   )
 }
 

@@ -3,11 +3,11 @@ import css from './Navigation.module.css';
 
 export default function Navigation() {
     return(
-        <nav>
-            <NavLink to='/'>
+        <nav className={css.navLine}>
+            <NavLink to='/' className={css.navTitle}>
                 Home
             </NavLink>
-            <NavLink to='/movies'>
+            <NavLink to='/movies' className={css.navTitle}>
                 Movies
             </NavLink>
         </nav>
