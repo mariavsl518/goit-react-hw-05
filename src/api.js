@@ -25,13 +25,11 @@ export const getMovieReview = async(movieId) =>{
     return resp.data
 }
 
-export const getMoviesByQuery = async(query, page) =>{
+export const getMoviesByQuery = async(query) =>{
     const resp = await axios.get(`/3/search/movie?include_adult=false&language=en-US&`,
     {params: {
         query,
-        page,
     }}
     );
-    console.log(resp.data);
     return resp.data
 }

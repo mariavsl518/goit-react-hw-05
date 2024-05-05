@@ -1,0 +1,15 @@
+.reviewList{
+    list-style: none;
+    color: rgb(52, 52, 52);
+}
+
+.reviewItem{
+    margin-bottom: 50px;
+    box-shadow: rgba(17, 17, 26, 0.1) 0px 1px 0px;box-shadow: rgba(33, 35, 38, 0.1) 0px 10px 10px -10px;
+}
+
+.notFoundTitle{
+    text-align: center;
+    font-size: 30px;
+    color: rgb(52, 52, 52);
+}

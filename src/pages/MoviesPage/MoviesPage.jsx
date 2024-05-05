@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react'
 import { getMoviesByQuery } from '../../api';
 import { useParams } from 'react-router-dom';
+import css from './MoviesPage.module.css'
 
 const MoviesPage = () => {
 
@@ -31,17 +32,21 @@ console.log(collection);
 
   return (
     <div>
-      <form onSubmit={handleSubmit}>
-        <input type="text" name='input' />
-        <button type='submit'>Search</button>
+      <form onSubmit={handleSubmit} 
+      className={css.searchForm}>
+        <input type="text" name='input' 
+        className={css.searchInput}/>
+        <button type='submit'className={css.searchBtn}>Search</button>
       </form>
       <div>
-        <ul>
+        <ul className={css.searchCollection}>
           {collection.map(({id, title, vote_average, poster_path})=>
-            <li key={id}>
-              <img src={`https://image.tmdb.org/t/p/w500/${poster_path}`} alt={title} />
-              <p>{title}</p>
-              <p>{vote_average}</p>
+            <li key={id} className={css.searchCollectionItem}>
+              <img src={`https://image.tmdb.org/t/p/w400/${poster_path}`} 
+              alt={title} 
+              />
+              <p className={css.movieTitle}><strong>{title}</strong></p>
+              <p className={css.ratingTitle}>Rating: {vote_average}</p>
             </li>
             )
           }

@@ -37,8 +37,8 @@ const MovieDetailsPage = () => {
         <div className={css.detailsBox}>
           <h1>{currentMovie.title}</h1>
           <p>
-            <strong>User Score: </strong> 
-              {Math.round(currentMovie.vote_average*10)}%
+            <strong>User score: </strong> 
+              {currentMovie.vote_average}
           </p>
           <p>
             <strong>Overview:</strong>

@@ -4,7 +4,6 @@ justify-content: flex-start;
 gap: 10px;
 font-size: 30px;
 box-shadow: rgba(0, 0, 0, 0.45) 0px 25px 20px -20px;
-min-width: 100vw;
 padding-left: 20px;
 margin-bottom: 30px;
 }
@@ -13,6 +12,11 @@ margin-bottom: 30px;
 background-color: transparent;
 padding: 10px;
 color: rgb(102, 167, 167);
+}
+
+.navTitle:hover{
+    background-color: rgb(102, 167, 167);
+    color: #fff;
 }
 
 .active{

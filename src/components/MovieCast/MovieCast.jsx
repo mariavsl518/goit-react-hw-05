@@ -7,6 +7,7 @@ const MovieCast = () => {
 
   const [cast, setCast] = useState([])
   const {movieId} = useParams()
+  const [fetchError, setFetchError] = useState(false)
 
   useEffect(()=>{
     async function fetchMovieCredits(){
@@ -14,7 +15,7 @@ const MovieCast = () => {
         const data = await getMovieCredits(movieId)
         setCast(data.cast)
       } catch (error) {
-        
+        setFetchError(true)
       }
     }
     fetchMovieCredits();
@@ -25,7 +26,11 @@ const MovieCast = () => {
 
   return (
     <ul className={css.castList}>
-      {cast.map(({id, character, name, profile_path})=>
+      
+      {fetchError ? 
+      (<p>Reload the page</p>) : 
+
+      cast.map(({id, character, name, profile_path})=>
         <li key={id} className={css.castItems}>
           <img src={`https://image.tmdb.org/t/p/w200/${profile_path}`} alt={name} />
           <p className={css.castName}>
@@ -34,6 +39,7 @@ const MovieCast = () => {
           <p>Character: {character}</p>
         </li>
       )
+      
       }
     </ul>
   )
