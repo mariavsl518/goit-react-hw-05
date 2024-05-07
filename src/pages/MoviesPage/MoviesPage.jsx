@@ -8,6 +8,7 @@ const MoviesPage = () => {
 
   const [movies, setMovies] = useState([]);
   const [fetchError, setFetchError] = useState(false);
+  const [emptyQuery, setEmptyQuery] = useState(false)
 
   const [searchParams, setSearchParams] = useSearchParams();
   const query = searchParams.get('query')
@@ -16,7 +17,7 @@ const MoviesPage = () => {
     evt.preventDefault();
     const value = evt.target.input.value;
     if(!value){
-      return
+      setEmptyQuery(true) 
     }
     searchParams.set('query', value);
     setSearchParams(searchParams);
@@ -50,6 +51,7 @@ const MoviesPage = () => {
       </form>
 
       {movies.length!==0 && <MovieList movies={movies}/>}
+      {emptyQuery && <p>Enter a keyword</p>}
       {fetchError && <p>Reload the page</p>}
     
     </div>
