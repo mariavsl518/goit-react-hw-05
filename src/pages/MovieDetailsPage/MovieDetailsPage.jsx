@@ -9,6 +9,7 @@ const MovieDetailsPage = () => {
   
   const location = useLocation();
   const backLinkURL = useRef(location.state ?? '/movies');
+  console.log(location.state);
 
  
   useEffect(()=>{

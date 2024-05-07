@@ -1,18 +1,18 @@
-import {React, useLocation} from 'react'
+import {React} from 'react'
 import css from './MovieList.module.css'
-import { Link } from 'react-router-dom'
+import { Link, useLocation } from 'react-router-dom'
 
 const MovieList = ({movies}) => {
 
-  const location = useLocation()
-  console.log(location);
-
+  const location = useLocation();
 
   return (
     <ul className={css.searchCollection}>
     {movies.map(({id, title, vote_average, poster_path})=>
       <li key={id} className={css.searchCollectionItem}>
-        <Link to={`/movies/${id}`} state={location}>
+        <Link to={`/movies/${id}`} 
+        state={location}
+        >
         <img src={`https://image.tmdb.org/t/p/w400/${poster_path}`} 
         alt={title} 
         />

@@ -6,10 +6,11 @@ import {useSearchParams } from 'react-router-dom';
 
 const MoviesPage = () => {
 
-  const [query, setQuery] = useState('')
   const [movies, setMovies] = useState([]);
   const [fetchError, setFetchError] = useState(false);
+
   const [searchParams, setSearchParams] = useSearchParams();
+  const query = searchParams.get('query')
 
   function handleSubmit(evt){
     evt.preventDefault();
@@ -17,8 +18,8 @@ const MoviesPage = () => {
     if(!value){
       return
     }
-    setQuery(value)
-    setSearchParams({query:value})
+    searchParams.set('query', value);
+    setSearchParams(searchParams);
   }
 
   useEffect(()=>{
@@ -32,8 +33,7 @@ const MoviesPage = () => {
     };
     fetchMoviesByQuery()
 },
-[query])
-
+[searchParams])
 
   return (
     <div>
