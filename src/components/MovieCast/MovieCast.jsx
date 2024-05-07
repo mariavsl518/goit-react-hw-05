@@ -30,13 +30,18 @@ const MovieCast = () => {
       (<p>Reload the page</p>) : 
 
       cast.map(({id, character, name, profile_path})=>
-        <li key={id} className={css.castItems}>
-          <img src={`https://image.tmdb.org/t/p/w200/${profile_path}`} alt={name} />
-          <p className={css.castName}>
-            <strong>{name}</strong>
-          </p>
-          <p>Character: {character}</p>
-        </li>
+        {
+          if(!profile_path){
+            return 
+          }
+          return(<li key={id} className={css.castItems}>
+            <img src={`https://image.tmdb.org/t/p/w200/${profile_path}`} alt={name} />
+            <p className={css.castName}>
+              <strong>{name}</strong>
+            </p>
+            <p>Character: {character}</p>
+          </li>)
+        }
       )
       }
     </ul>
