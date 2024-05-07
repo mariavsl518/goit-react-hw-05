@@ -20,7 +20,7 @@ const MovieReviews = () => {
       }
     }
     fetchMovieReviews()
-  },[])
+  },[movieId])
 
   return (
       <ul className={css.reviewList}>

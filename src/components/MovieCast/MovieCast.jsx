@@ -20,10 +20,9 @@ const MovieCast = () => {
     }
     fetchMovieCredits();
   },
-  [])
+  [movieId])
 
   
-
   return (
     <ul className={css.castList}>
       
@@ -39,7 +38,6 @@ const MovieCast = () => {
           <p>Character: {character}</p>
         </li>
       )
-      
       }
     </ul>
   )

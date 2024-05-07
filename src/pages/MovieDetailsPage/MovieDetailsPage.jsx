@@ -1,20 +1,21 @@
-import React, { useEffect, useState } from 'react'
+import React, { useEffect, useRef, useState } from 'react'
 import { getMovieById } from '../../api'
-import { Link, NavLink, useParams, Outlet} from 'react-router-dom'
+import { Link, useParams, Outlet, useLocation} from 'react-router-dom'
 import css from './MovieDetailsPage.module.css'
-// import MovieCast from '../../components/MovieCast/MovieCast'
-// import MovieReviews from '../../components/MovieReviews/MovieReviews'
 
 const MovieDetailsPage = () => {
   const { movieId } = useParams()
   const [currentMovie, setCurrentMovie] = useState([])
+  
+  const location = useLocation();
+  const backLinkURL = useRef(location.state ?? '/movies');
+
  
   useEffect(()=>{
     async function fetchMovieById() {
       try {
         const data = await getMovieById(movieId);
         setCurrentMovie(data)
-        console.log(currentMovie);
       } catch (error) {
         
       }
@@ -27,7 +28,7 @@ const MovieDetailsPage = () => {
   return (
 
     <div className={css.detailsPageContainer}>
-      <Link to='/'className={css.backBtn}>
+      <Link to={backLinkURL.current} className={css.backBtn}>
         Back
       </Link>
       <div className={css.detailsContainer}>
