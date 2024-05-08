@@ -34,7 +34,7 @@ const MoviesPage = () => {
     };
     fetchMoviesByQuery()
 },
-[searchParams])
+[query])
 
   return (
     <div>
